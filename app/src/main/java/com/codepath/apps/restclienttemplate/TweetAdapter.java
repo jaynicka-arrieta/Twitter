@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> {
     private List<Tweet> mTweets;
-
+    Context context;
     //pass in tweets arr into constructor
     public TweetAdapter(List<Tweet> tweets) {
         mTweets = tweets;
@@ -25,7 +25,7 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         View tweetView = inflater.inflate(R.layout.item_tweet, parent, false);
@@ -42,6 +42,10 @@ public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder> 
         //populate the views according to data
         holder.tvUsername.setText(tweet.user.name);
         holder.tvBody.setText(tweet.body);
+
+        GlideApp.with(context)
+                .load(tweet.user.profileImageUrl)
+                .into(holder.ivProfileImage);
     }
 
     @Override
