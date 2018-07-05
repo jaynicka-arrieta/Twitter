@@ -58,22 +58,40 @@ public class ComposeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String message = etCompose.getText().toString();
-                client.sendTweet(message, new JsonHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        Tweet tweet = new Tweet();
-                        tweets.add(tweet);
-                        tweetAdapter.notifyItemInserted(tweets.size()-1);
-
-                        Intent i = new Intent(getApplicationContext(), TimelineActivity.class);
-                        Toast toast = Toast.makeText(getApplicationContext(), "Successfully tweeted", Toast.LENGTH_SHORT);
+                String charCount = tvChar.getText().toString();
+                boolean valid = false;
+                for (int i = 0; i < charCount.length(); i++) {
+                    if (charCount.contains("-")) {
+                        valid = false;
+                        Toast toast = Toast.makeText(getApplicationContext(), "Character count too high", Toast.LENGTH_SHORT);
                         View view = toast.getView();
                         TextView text = (TextView) view.findViewById(android.R.id.message);
                         text.setTextColor(Color.DKGRAY);
                         toast.show();
-                        startActivity(i);
+                        break;
+                    } else {
+                        valid = true;
                     }
-                });
+                }
+                if (valid) {
+                    client.sendTweet(message, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                            Tweet tweet = new Tweet();
+                            tweets.add(tweet);
+                            tweetAdapter.notifyItemInserted(tweets.size()-1);
+
+                            Intent i = new Intent(getApplicationContext(), TimelineActivity.class);
+                            Toast toast = Toast.makeText(getApplicationContext(), "Successfully tweeted", Toast.LENGTH_SHORT);
+                            View view = toast.getView();
+                            TextView text = (TextView) view.findViewById(android.R.id.message);
+                            text.setTextColor(Color.DKGRAY);
+                            toast.show();
+                            startActivity(i);
+                        }
+                    });
+                }
 
             }
         });
