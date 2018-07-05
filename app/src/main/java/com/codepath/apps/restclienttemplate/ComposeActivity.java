@@ -31,6 +31,7 @@ public class ComposeActivity extends AppCompatActivity {
                 String message = etCompose.getText().toString();
                 JsonHttpResponseHandler handler = new JsonHttpResponseHandler();
                 client.sendTweet(message, handler);
+                
             }
         });
     }
