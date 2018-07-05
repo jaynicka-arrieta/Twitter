@@ -21,10 +21,12 @@ import com.loopj.android.http.RequestParams;
  * NOTE: You may want to rename this object based on the service i.e TwitterClient or FlickrClient
  * 
  */
+
+
 public class TwitterClient extends OAuthBaseClient {
 	public static final BaseApi REST_API_INSTANCE = TwitterApi.instance(); // Change this
 	public static final String REST_URL = "https://api.twitter.com/1.1"; // Change this, base API URL
-	public static final String REST_CONSUMER_KEY = "zFXFYzsX2FZ2O4SCNxSWe9qPZ";       // Change this
+	public static final String REST_CONSUMER_KEY = "zFXFYzsX2FZ2O4SCNxSWe9qPZ";    // Change this
 	public static final String REST_CONSUMER_SECRET = "8qHoBL4wgqFvbj3H2ExLGfcIXLSN6pDFMvZplmUi8mDefVFIpk"; // Change this
 
 	// Landing page to indicate the OAuth flow worked in case Chrome for Android 25+ blocks navigation back to the app.
