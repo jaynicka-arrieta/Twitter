@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,7 +60,6 @@ public class ComposeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message = etCompose.getText().toString();
                 String charCount = tvChar.getText().toString();
-
                 boolean valid = false;
                 for (int i = 0; i < charCount.length(); i++) {
                     if (charCount.contains("-")) {
@@ -67,7 +67,8 @@ public class ComposeActivity extends AppCompatActivity {
                         Toast toast = Toast.makeText(getApplicationContext(), "Character count too high", Toast.LENGTH_SHORT);
                         View view = toast.getView();
                         TextView text = (TextView) view.findViewById(android.R.id.message);
-                        text.setTextColor(Color.DKGRAY);
+                        text.setTextColor(Color.WHITE);
+                        toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 0);
                         toast.show();
                         break;
                     } else {
@@ -87,7 +88,8 @@ public class ComposeActivity extends AppCompatActivity {
                             Toast toast = Toast.makeText(getApplicationContext(), "Successfully tweeted", Toast.LENGTH_SHORT);
                             View view = toast.getView();
                             TextView text = (TextView) view.findViewById(android.R.id.message);
-                            text.setTextColor(Color.DKGRAY);
+                            text.setTextColor(Color.WHITE);
+                            toast.setGravity(Gravity.BOTTOM|Gravity.CENTER, 0, 0);
                             toast.show();
                             startActivity(i);
                         }
