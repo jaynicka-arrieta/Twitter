@@ -59,6 +59,7 @@ public class ComposeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String message = etCompose.getText().toString();
                 String charCount = tvChar.getText().toString();
+
                 boolean valid = false;
                 for (int i = 0; i < charCount.length(); i++) {
                     if (charCount.contains("-")) {
