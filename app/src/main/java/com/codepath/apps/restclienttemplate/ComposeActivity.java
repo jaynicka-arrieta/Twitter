@@ -110,12 +110,20 @@ public class ComposeActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                tvChar.setText(String.valueOf(140-etCompose.length()));
-                if (tvChar.getText().toString().equals("-1")) {
-                    tvChar.setTextColor(Color.RED);
+                String charCount = tvChar.getText().toString();
+                boolean tooHigh = false;
+                for (int i = 0; i < charCount.length(); i++) {
+                    if (charCount.contains("-")) {
+                        tooHigh = true;
+                    } else {
+                        tooHigh = false;
+                    }
                 }
-                if (tvChar.getText().toString().equals("0")) {
-                    tvChar.setTextColor(Color.GRAY);
+                tvChar.setText(String.valueOf(140-etCompose.length()));
+                if (tooHigh) {
+                    tvChar.setTextColor(Color.RED);
+                } else {
+                    tvChar.setTextColor(Color.DKGRAY);
                 }
             }
 

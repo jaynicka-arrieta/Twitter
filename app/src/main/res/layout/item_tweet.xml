@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/off_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="0.75dp">
 
     <ImageView
         android:id="@+id/ivProfileImage"
@@ -19,7 +20,8 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:layout_marginLeft="5dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/tvBody"
@@ -28,7 +30,8 @@
         android:layout_below="@+id/tvUsername"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:layout_marginLeft="5dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:id="@+id/tvTime"
@@ -36,5 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@android:color/black"/>
 </RelativeLayout>
